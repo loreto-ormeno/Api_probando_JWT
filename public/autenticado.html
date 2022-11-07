@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FBI System</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <h1>&#128374; FBI System &#128374;</h1>
+  <div class="card bg-dark text-center">
+    <div class="card-body">
+      <h1>Autenticado</h1>
+      <button onclick="submitPerfil()">Ir al perfil</button>
+    </div>
+  </div>
+  <div id="respuesta"></div>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 60vh;
+    }
+  </style>
+
+  <script>
+    async function submitPerfil() { 
+      const response = await fetch("http://localhost:3000/validar", {
+        method: "get",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json;charset=UTF-8',
+            'Authorization': `Bearer ${JSON.stringify(sessionStorage)}`
+          },
+      });
+      window.location.href = '/perfil'
+     }
+  </script>
+</body>
+
+</html>
